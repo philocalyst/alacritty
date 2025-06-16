@@ -214,7 +214,7 @@ impl Iterator for TermDamageIterator<'_> {
 }
 
 /// State of the terminal damage.
-struct TermDamageState {
+pub struct TermDamageState {
     /// Hint whether terminal should be damaged entirely regardless of the actual damage changes.
     full: bool,
 
@@ -278,55 +278,55 @@ pub struct Term<T> {
     ///
     /// Tracks the screen buffer currently in use. While the alternate screen buffer is active,
     /// this will be the alternate grid. Otherwise it is the primary screen buffer.
-    grid: Grid<Cell>,
+    pub grid: Grid<Cell>,
 
     /// Currently inactive grid.
     ///
     /// Opposite of the active grid. While the alternate screen buffer is active, this will be the
     /// primary grid. Otherwise it is the alternate screen buffer.
-    inactive_grid: Grid<Cell>,
+    pub inactive_grid: Grid<Cell>,
 
     /// Index into `charsets`, pointing to what ASCII is currently being mapped to.
-    active_charset: CharsetIndex,
+    pub active_charset: CharsetIndex,
 
     /// Tabstops.
-    tabs: TabStops,
+    pub tabs: TabStops,
 
     /// Mode flags.
-    mode: TermMode,
+    pub mode: TermMode,
 
     /// Scroll region.
     ///
     /// Range going from top to bottom of the terminal, indexed from the top of the viewport.
-    scroll_region: Range<Line>,
+    pub scroll_region: Range<Line>,
 
     /// Modified terminal colors.
-    colors: Colors,
+    pub colors: Colors,
 
     /// Current style of the cursor.
-    cursor_style: Option<CursorStyle>,
+    pub cursor_style: Option<CursorStyle>,
 
     /// Proxy for sending events to the event loop.
-    event_proxy: T,
+    pub event_proxy: T,
 
     /// Current title of the window.
-    title: Option<String>,
+    pub title: Option<String>,
 
     /// Stack of saved window titles. When a title is popped from this stack, the `title` for the
     /// term is set.
-    title_stack: Vec<Option<String>>,
+    pub title_stack: Vec<Option<String>>,
 
     /// The stack for the keyboard modes.
-    keyboard_mode_stack: Vec<KeyboardModes>,
+    pub keyboard_mode_stack: Vec<KeyboardModes>,
 
     /// Currently inactive keyboard mode stack.
-    inactive_keyboard_mode_stack: Vec<KeyboardModes>,
+    pub inactive_keyboard_mode_stack: Vec<KeyboardModes>,
 
     /// Information about damaged cells.
-    damage: TermDamageState,
+    pub damage: TermDamageState,
 
     /// Config directly for the terminal.
-    config: Config,
+    pub config: Config,
 }
 
 /// Configuration options for the [`Term`].
@@ -2318,7 +2318,7 @@ pub enum ClipboardType {
     Selection,
 }
 
-struct TabStops {
+pub struct TabStops {
     tabs: Vec<bool>,
 }
 
